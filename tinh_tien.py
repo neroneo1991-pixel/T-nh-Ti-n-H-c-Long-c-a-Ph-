@@ -12,7 +12,7 @@ so_nu = st.number_input("👩 Số nữ (70% so với nam)", min_value=0, step=1
 # Phụ thu
 st.subheader("➕ Phí phụ thu")
 phu_thu = []
-so_nguoi_phu_thu = st.number_input("Số người có phụ thu (mua nước, Quấn cán...)", min_value=0, step=1)
+so_nguoi_phu_thu = st.number_input("Số người có phụ thu (mua nước, quấn cán, nhậu nhẹt bê tha🤣...)", min_value=0, step=1)
 
 for i in range(so_nguoi_phu_thu):
     col1, col2 = st.columns([2, 1])
