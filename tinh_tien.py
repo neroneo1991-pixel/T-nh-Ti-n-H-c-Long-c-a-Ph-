@@ -2,20 +2,20 @@ import streamlit as st
 
 st.set_page_config(page_title="🏸 Tính tiền team Hắc Long của Phú 🏸", page_icon="🏸")
 
-st.title("🏸 Tính tiền team Hắc Long của Phú 🏸")
+st.title("🏸Tính tiền Hắc Long của Phú🏸")
 
 # Nhập dữ liệu cơ bản
 tong_tien = st.number_input("💰 Tổng tiền sân", min_value=0, step=1000)
 so_nam = st.number_input("👦 Số nam (100%)", min_value=0, step=1)
-so_nu = st.number_input("👩 Số nữ (70%)", min_value=0, step=1)
+so_nu = st.number_input("👩 Số nữ (70% so với nam)", min_value=0, step=1)
 
 # Phụ thu
 st.subheader("➕ Phí phụ thu")
 phu_thu = []
-so_nguoi_phu_thu = st.number_input("Số người có phụ thu (mua nước, ăn vặt...)", min_value=0, step=1)
+so_nguoi_phu_thu = st.number_input("Số người có phụ thu (mua nước, Quấn cán...)", min_value=0, step=1)
 
 for i in range(so_nguoi_phu_thu):
-    col1, col2 = st.columns([2,1])
+    col1, col2 = st.columns([2, 1])
     with col1:
         ten = st.text_input(f"Tên người {i+1}", key=f"ten_{i}")
     with col2:
@@ -32,8 +32,14 @@ if st.button("📊 Tính tiền"):
     tien_nu = round(tien_mot_trong_so * 0.7)
 
     st.success("✅ Kết quả chia tiền:")
-    st.write(f"👦 Mỗi nam trả: **{tien_nam:,} VND**")
-    st.write(f"👩 Mỗi nữ trả: **{tien_nu:,} VND**")
+    
+    # Chỉ hiển thị nếu có nam
+    if so_nam > 0:
+        st.write(f"👦 Mỗi nam trả: **{tien_nam:,} VND**")
+
+    # Chỉ hiển thị nếu có nữ
+    if so_nu > 0:
+        st.write(f"👩 Mỗi nữ trả: **{tien_nu:,} VND**")
 
     if phu_thu:
         st.subheader("🧾 Phụ thu thêm:")
