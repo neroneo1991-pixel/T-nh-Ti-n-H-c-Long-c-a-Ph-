@@ -48,3 +48,20 @@ if st.button("📊 Tính tiền"):
 
         tong_phu_thu = sum(t for _, t in phu_thu)
         st.info(f"💡 Tổng phụ thu: **{tong_phu_thu:,} VND**")
+         # ==== CHÈN QR CHUYỂN KHOẢN Ở ĐÂY ====
+    import urllib.parse
+
+    st.subheader("🏦 Thông tin chuyển khoản")
+    st.write("📌 Số tài khoản: **7890727041991**")
+    st.write("👤 Chủ tài khoản: **Đặng Quang Phú**")
+    st.write("🏦 Ngân hàng: **MB Bank**")
+
+    so_tien_mac_dinh = 0  # muốn set sẵn số tiền thì đổi số 0 này
+    noi_dung_ck = "Tien cau long Hac Long"
+
+    qr_url = (
+        f"https://img.vietqr.io/image/970422-7890727041991-compact.png?"
+        f"amount={so_tien_mac_dinh}&addInfo={urllib.parse.quote(noi_dung_ck)}&accountName={urllib.parse.quote('Đặng Quang Phú')}"
+    )
+
+    st.image(qr_url, caption="📷 Quét QR để chuyển khoản", width=250)
