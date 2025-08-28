@@ -5,9 +5,9 @@ st.set_page_config(page_title="🏸 Tính tiền team Hắc Long của Phú 🏸
 st.title("🏸Tính tiền Hắc Long của Phú🏸")
 
 # Nhập dữ liệu cơ bản
-tong_tien = st.number_input("💰 Tổng tiền sân+Cầu", min_value=0, step=1000)
+tong_tien = st.number_input("💰 Tổng tiền sân+cầu", min_value=0, step=1000)
 so_nam = st.number_input("👦 Số nam (100%)", min_value=0, step=1)
-so_nu = st.number_input("👩 Số nữ (70% so với nam)", min_value=0, step=1)
+so_nu = st.number_input("👩 Số nữ (70% so với nam về sớm 1/2 buổi hoặc đi trễ tính như nữ luôn)", min_value=0, step=1)
 
 # Phụ thu
 st.subheader("➕ Phí phụ thu")
