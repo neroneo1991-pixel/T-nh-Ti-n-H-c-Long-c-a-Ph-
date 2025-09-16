@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(page_title="🏸 Tính tiền team Hắc Long của Phú 🏸", page_icon="🐉")
 
-st.title("🏸App Tính tiền cho thành viên Hắc Long 🐉")
+st.title("🏸Hắc Long Bang - Càng phang càng thích 🐉")
 
 # Nhập dữ liệu cơ bản
 tong_tien = st.number_input("💰 Tổng tiền sân+cầu", min_value=0, step=1000)
