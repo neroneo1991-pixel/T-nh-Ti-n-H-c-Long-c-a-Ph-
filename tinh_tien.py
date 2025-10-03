@@ -23,9 +23,9 @@ st.title("🏸 Hắc Long Bang - Càng phang càng thích 🐉")
 
 # ===== NHẬP DỮ LIỆU =====
 tong_tien = st.number_input("💰 Tổng tiền sân + cầu", min_value=0, step=1000)
-so_nam = st.number_input("👦 Số nam (100%)", min_value=0, step=1)
-so_nu = st.number_input("👩 Số nữ (70%)", min_value=0, step=1)
-so_50 = st.number_input("🧍‍♂️ Người đóng 50% (đi nửa buổi)", min_value=0, step=1)
+so_nam = st.number_input("👦 Số nam đánh full buổi (100%)", min_value=0, step=1)
+so_nu = st.number_input("👩 Số nữ tính (70%), hoặc người chơi vào trễ ", min_value=0, step=1)
+so_50 = st.number_input("🧍‍♂️ Trường hợp đặc biệt người đóng 50% (đi nửa buổi)", min_value=0, step=1)
 
 # ===== PHỤ THU =====
 st.subheader("➕ Phí phụ thu")
@@ -56,10 +56,10 @@ if st.button("📊 Tính tiền"):
         st.write(f"👦 Mỗi nam trả: **{tien_nam:,} VND**")
 
     if so_nu > 0:
-        st.write(f"👩 Mỗi nữ trả: **{tien_nu:,} VND**")
+        st.write(f"👩 Mỗi nữ/ người đi trễ tính 70% trả: **{tien_nu:,} VND**")
 
     if so_50 > 0:
-        st.write(f"🧍‍♂️ Mỗi người 50% trả: **{tien_50:,} VND**")
+        st.write(f"🧍‍♂️ Mỗi người đi trễ/ về sớm nửa buổi 50% trả: **{tien_50:,} VND**")
 
     if phu_thu:
         st.subheader("🧾 Phụ thu thêm:")
