@@ -24,7 +24,7 @@ st.title("🏸 Hắc Long Bang - Càng phang càng thích 🐉")
 # ===== NHẬP DỮ LIỆU =====
 tong_tien = st.number_input("💰 Tổng tiền sân + cầu", min_value=0, step=1000)
 so_nam = st.number_input("👦 Số nam đánh full buổi (100%)", min_value=0, step=1)
-so_nu = st.number_input("👩 Số nữ tính (70%), hoặc người chơi vào trễ ", min_value=0, step=1)
+so_nu = st.number_input("👩 Số nữ, hoặc người chơi vào trễ tính 70%", min_value=0, step=1)
 so_50 = st.number_input("🧍‍♂️ Trường hợp đặc biệt người đóng 50% (đi nửa buổi)", min_value=0, step=1)
 
 # ===== PHỤ THU =====
