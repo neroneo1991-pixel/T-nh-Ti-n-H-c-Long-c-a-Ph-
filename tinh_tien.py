@@ -1,5 +1,7 @@
 import streamlit as st
+import urllib.parse
 
+# ===== HÌNH NỀN =====
 st.markdown(
     """
     <style>
@@ -15,16 +17,17 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# ===== CẤU HÌNH APP =====
 st.set_page_config(page_title="🏸 Tính tiền team Hắc Long của Phú 🏸", page_icon="🐉")
+st.title("🏸 Hắc Long Bang - Càng phang càng thích 🐉")
 
-st.title("🏸Hắc Long Bang - Càng phang càng thích 🐉")
-
-# Nhập dữ liệu cơ bản
-tong_tien = st.number_input("💰 Tổng tiền sân+cầu", min_value=0, step=1000)
+# ===== NHẬP DỮ LIỆU =====
+tong_tien = st.number_input("💰 Tổng tiền sân + cầu", min_value=0, step=1000)
 so_nam = st.number_input("👦 Số nam (100%)", min_value=0, step=1)
-so_nu = st.number_input("👩 Số nữ (70% so với nam, về sớm 1/2 buổi hoặc đi trễ 1/2 tính như nữ luôn)", min_value=0, step=1)
+so_nu = st.number_input("👩 Số nữ (70%)", min_value=0, step=1)
+so_50 = st.number_input("🧍‍♂️ Người đóng 50% (đi nửa buổi)", min_value=0, step=1)
 
-# Phụ thu
+# ===== PHỤ THU =====
 st.subheader("➕ Phí phụ thu")
 phu_thu = []
 so_nguoi_phu_thu = st.number_input("Số người có phụ thu (mua nước, quấn cán, nhậu nhẹt bê tha🤣...)", min_value=0, step=1)
@@ -38,34 +41,34 @@ for i in range(so_nguoi_phu_thu):
     if ten:
         phu_thu.append((ten, tien))
 
-# Tính toán
+# ===== TÍNH TOÁN =====
 if st.button("📊 Tính tiền"):
-    tong_trong_so = so_nam * 1 + so_nu * 0.7
+    tong_trong_so = so_nam * 1 + so_nu * 0.7 + so_50 * 0.5
     tien_mot_trong_so = tong_tien / tong_trong_so if tong_trong_so > 0 else 0
 
     tien_nam = round(tien_mot_trong_so * 1)
     tien_nu = round(tien_mot_trong_so * 0.7)
+    tien_50 = round(tien_mot_trong_so * 0.5)
 
     st.success("✅ Kết quả chia tiền:")
-    
-    # Chỉ hiển thị nếu có nam
+
     if so_nam > 0:
         st.write(f"👦 Mỗi nam trả: **{tien_nam:,} VND**")
 
-    # Chỉ hiển thị nếu có nữ
     if so_nu > 0:
         st.write(f"👩 Mỗi nữ trả: **{tien_nu:,} VND**")
+
+    if so_50 > 0:
+        st.write(f"🧍‍♂️ Mỗi người 50% trả: **{tien_50:,} VND**")
 
     if phu_thu:
         st.subheader("🧾 Phụ thu thêm:")
         for ten, tien in phu_thu:
             st.write(f"- {ten}: +{tien:,} VND")
-
         tong_phu_thu = sum(t for _, t in phu_thu)
         st.info(f"💡 Tổng phụ thu: **{tong_phu_thu:,} VND**")
-         # ==== CHÈN QR CHUYỂN KHOẢN Ở ĐÂY ====
-    import urllib.parse
 
+    # ===== QR CHUYỂN KHOẢN =====
     st.subheader("🏦 Thông tin chuyển khoản")
     st.write("📌 Số tài khoản: **7890727041991**")
     st.write("👤 Chủ tài khoản: **Đặng Quang Phú**")
@@ -78,8 +81,4 @@ if st.button("📊 Tính tiền"):
         f"https://img.vietqr.io/image/970422-7890727041991-compact.png?"
         f"amount={so_tien_mac_dinh}&addInfo={urllib.parse.quote(noi_dung_ck)}&accountName={urllib.parse.quote('Đặng Quang Phú')}"
     )
-
     st.image(qr_url, caption="📷 Quét QR để chuyển khoản", width=250)
-import streamlit as st
-import pandas as pd
-
