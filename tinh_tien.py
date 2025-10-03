@@ -1,4 +1,27 @@
 import streamlit as st
+import base64
+
+# === Hàm chèn ảnh nền ===
+def set_background(image_file):
+    with open(image_file, "rb") as f:
+        data = f.read()
+    encoded = base64.b64encode(data).decode()
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("data:image/png;base64,{encoded}");
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+# 📌 Gọi hàm này ở đầu file, trước khi tạo giao diện
+set_background("background.png")
 
 st.set_page_config(page_title="🏸 Tính tiền team Hắc Long của Phú 🏸", page_icon="🐉")
 
